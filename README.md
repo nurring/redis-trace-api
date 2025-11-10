@@ -33,13 +33,22 @@ docker build -t redis-proxy .
 
 ## 환경변수 설정
 
-`.env` 파일을 생성하고 다음 환경변수를 설정하세요:
+`.env.example` 파일을 `.env`로 복사하고 환경변수를 설정하세요:
+
+```bash
+cp .env.example .env
+```
+
+`.env` 파일 내용:
 
 ```
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_DB=0
+REDIS_PASSWORD=your_redis_password_here
 ```
+
+**참고**: Redis 서버에 비밀번호가 설정되지 않은 경우 `REDIS_PASSWORD`는 생략하거나 비워둘 수 있습니다.
 
 ## 실행
 
