@@ -72,18 +72,20 @@ docker run -p 8000:8000 --env-file .env redis-proxy
 
 Redis에서 키를 조회하고 블록 데이터를 가져옵니다.
 
-**Request Body:**
+**Request Body(예시):**
 ```json
 {
-  "key": "your-key"
+  "key": "chat:c1:workflow:w1:execution:e1:block:block_1"
 }
 ```
 
-**Response:**
+**Response(예시):**
 ```json
 {
-  "block": "block_id",
-  ...
+  "block": "block_1", #현재 머무르는 block
+  "status": "completed",
+  "timestamp": 1761025965,
+  "message": "실행중입니다"
 }
 ```
 
@@ -91,18 +93,18 @@ Redis에서 키를 조회하고 블록 데이터를 가져옵니다.
 
 타임스탬프를 추가하여 Redis에 데이터를 저장합니다.
 
-**Request Body:**
+**Request Body(예시):**
 ```json
 {
-  "key": "your-key",
-  "value": "{\"data\": \"value\"}"
+  "key": "chat:c1:workflow:w1:execution:e1:block:block_2",
+  "value": "{\"status\": \"running\",\"message\": \"실행중입니다\"}"
 }
 ```
 
-**Response:**
+**Response(예시):**
 ```json
 {
-  "message": "Set your-key = {\"data\":\"value\",\"timestamp\":1234567890}"
+  "message": "Set chat:c1:workflow:w1:execution:e1:block:block_2 = {\"status\": \"running\",\"message\": \"실행중입니다\",\"timestamp\": 1761020859}"
 }
 ```
 
